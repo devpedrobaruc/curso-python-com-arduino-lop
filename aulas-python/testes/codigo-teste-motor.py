@@ -1,10 +1,10 @@
-from ponte import ler_quantidade_de_luz, ler_distancia, interruptor, conectar, potencia_motor
+from ponte import ler_distancia, conectar, potencia_motor, ler_porta_analogica
 from time import sleep
 
-conectar('COM4')
+conectar('COM3')
 
 while (1):
-    luz = ler_quantidade_de_luz()
+    luz = ler_porta_analogica()
     distancia = ler_distancia()
 
     if (distancia > 100):

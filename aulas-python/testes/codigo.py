@@ -1,17 +1,18 @@
-from ponte import ler_quantidade_de_luz, ler_distancia, interruptor, conectar
+from ponte import ler_porta_analogica, ler_distancia, alterar_estado_pino, conectar, configurar_pino
 from time import sleep
 
-conectar('/dev/ttyUSB0')
+conectar('COM3')
+configurar_pino(9, 'saida')
 
 while (1):
-    luz = ler_quantidade_de_luz()
+    luz = ler_porta_analogica()
     distancia = ler_distancia()
     print('luz', luz)
     print('distancia(cm)', distancia)
 
     if (distancia > 30):
-        interruptor(True)
+        alterar_estado_pino(9, True)
     else:
-        interruptor(False)
+        alterar_estado_pino(9, False)
 
     sleep(1)
