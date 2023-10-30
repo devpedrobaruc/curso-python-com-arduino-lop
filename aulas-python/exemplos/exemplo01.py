@@ -5,7 +5,7 @@ conectar('COM3')
 configurar_pino(9, 'saida')
 
 luz = ler_porta_analogica()
-if (luz > 500):
+if (luz > 300):
     print('MUITA LUZ')
 else:
     print('POUCA LUZ')
