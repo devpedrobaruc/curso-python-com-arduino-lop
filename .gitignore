@@ -5,5 +5,7 @@
 .vscode/ipch
 
 aulas-python/__pycache__
+aulas-python/exemplos/__pycache__
 aulas-python/exemplos/ponte.py
+aulas-python/testes/__pycache__
 aulas-python/testes/ponte.py
