@@ -36,3 +36,4 @@
 
 ### OBS: os arquivos com os metodos estão em: aulas-python/ponte.py
 
+## O código arduino foi feito utilizando a extensão PlatformIo do Visual Studio Code, mas deve rodar sem problemas no arduino, só precisa modificar a extensão do arquivo para .ino
