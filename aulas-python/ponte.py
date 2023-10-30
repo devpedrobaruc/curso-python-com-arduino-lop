@@ -5,13 +5,13 @@ from time import sleep
 connection: serial.Serial | None = None
 
 
-def conectar(port)->None:
+def conectar(port) -> None:
     global connection
     connection = serial.Serial(port, 9600, timeout=None)
     sleep(2)
 
 
-def ler_distancia()->float:
+def ler_distancia() -> float:
     if (connection == None):
         return float(0)
 
@@ -23,7 +23,7 @@ def ler_distancia()->float:
     return float(data)
 
 
-def ler_porta_analogica()->float:
+def ler_porta_analogica() -> float:
     if (connection == None):
         return float(0)
 
@@ -34,17 +34,18 @@ def ler_porta_analogica()->float:
         return float(0)
     return float(data)
 
-def configurar_pino(pino:int, modo:str['entrada','saida'])->None:
+
+def configurar_pino(pino: int, modo: str) -> None:
     if (connection == None):
         raise Exception('ERRO CONFIGURAR')
-    
-    if(modo !='entrada' and modo !='saida'):
+
+    if (modo != 'entrada' and modo != 'saida'):
         raise Exception('O modo só pode ser "entrada" ou "saida"')
 
-    connection.write((b'3' if modo =='entrada' else b'4')+pino.to_bytes(1))
+    connection.write((b'3' if modo == 'entrada' else b'4')+pino.to_bytes(1))
 
 
-def alterar_estado_pino(pino:int, estado: bool)->None:
+def alterar_estado_pino(pino: int, estado: bool) -> None:
     if (connection == None):
         raise Exception('ERRO ESTADO')
 
@@ -53,7 +54,7 @@ def alterar_estado_pino(pino:int, estado: bool)->None:
     connection.write(b'5'+pino_byte+estado_byte)
 
 
-def potencia_motor(potencia: int)->None:
+def potencia_motor(potencia: int) -> None:
     if (connection == None):
         raise Exception('ERRO MOTOR')
 
