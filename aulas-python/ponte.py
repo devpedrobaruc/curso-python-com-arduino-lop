@@ -42,14 +42,15 @@ def configurar_pino(pino: int, modo: str) -> None:
     if (modo != 'entrada' and modo != 'saida'):
         raise Exception('O modo só pode ser "entrada" ou "saida"')
 
-    connection.write((b'3' if modo == 'entrada' else b'4')+pino.to_bytes(1))
+    connection.write((b'3' if modo == 'entrada' else b'4') +
+                     pino.to_bytes(1, 'little'))
 
 
 def alterar_estado_pino(pino: int, estado: bool) -> None:
     if (connection == None):
         raise Exception('ERRO ESTADO')
 
-    pino_byte = pino.to_bytes(1)
+    pino_byte = pino.to_bytes(1, 'little')
     estado_byte = b'1' if estado else b'0'
     connection.write(b'5'+pino_byte+estado_byte)
 
@@ -58,7 +59,7 @@ def potencia_motor(potencia: int) -> None:
     if (connection == None):
         raise Exception('ERRO MOTOR')
 
-    connection.write(b'6'+potencia.to_bytes(1))
+    connection.write(b'6'+potencia.to_bytes(1, 'little'))
 
 
 if __name__ == '__main__':
